@@ -7,8 +7,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import *
 import pandas
-
-
     def doThis(classifiers, vector, train_data, test_data ):
 
          for allocation in classifiers:
@@ -37,7 +35,6 @@ import pandas
                 KNeighborsClassifier(),
             ),
         [
-
             TfidfVectorizer(),
             CountVectorizer(),
         ],

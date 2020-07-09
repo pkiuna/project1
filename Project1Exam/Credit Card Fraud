@@ -10,7 +10,7 @@ from sklearn.cross_validation import crossValue
 
 data = pd.read_csv(creditcard.csv) #read data from file
 data.shape
-data.head() #shaping the data according to the table in file
+data.head()  #shaping the data according to the table in file
 
 data["Class"].countValue()
 

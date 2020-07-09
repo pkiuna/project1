@@ -71,12 +71,44 @@ plt.show()
 
 #Complete Visualization
 sns.jointplot('Temperature (C)', 'Apparent Temperature (C)',kind="reg", data=data)
-sns.jointplot(y=data['Humidity'],x=myData['Temperature (C)'])
+sns.jointplot(y=data['Humidity'],x=data['Temperature (C)'])
 sns.jointplot(y=data['Pressure (millibars)'],x=data['Temperature (C)'])
 sns.jointplot(y=data['Wind Speed'],x=data['Temperature (C)'])
 sns.jointplot('Apparent Temperature (C)','Humidity',kind="reg", data=data)
 sns.jointplot(y=data['Humidity'],x=data['Pressure (millibars)'])
 sns.jointplot('Apparent Temperature (C)','Wind Speed)',data=data)
+
+#testing for training model with partial data
+X = myData['2006-01-01':'2006-08-31']
+#testing for testing model with partial data
+X1 = myData['2006-09-01':'2006-12-31']
+
+#training model columns
+X_train = X[['Temperature (C)','Wind Speed', 'Pressure', 'Humidity']]
+X_train.info()
+
+Y_train = X['Apparent Temperature (C)']
+Y_train
+
+#train model with sets
+regular = linear_model.LinearRegression()
+regular.fit(X_train,Y_train)
+#Column testing
+X_train = X[['Temperature (C)','Wind Speed', 'Pressure', 'Humidity']]
+X_test
+Y_test = X1['Apparent Temperature (C)']
+Y_test
+#anticipating the apparent temp
+Y_Prediction = regular.predict(X_Test)
+regular.score(X_test, Y_Test)
+
+#actual temperature
+df= pd.DataFrame({'Precice': Y_test, 'Anticipated' : Y_Prediction)
+
+
+
+
+
 
 
 
